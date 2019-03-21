@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Music Albums</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'music/style.css' %}" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Logo -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{% url 'music:index' %}">Viberr</a>
+            </div>
+        </div>
+    </nav>
+    {% if albums %}
+    <h3>Here are all Albums</h3>
+    <ul>
+        {% for album in albums %}
+        <li><a href="{% url 'music:detail' album.id %}" >{{ album.album_title }}</a></li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <h3>Sorry No Albums to Display</h3>
+    {% endif %}
+</body>
+</html>
